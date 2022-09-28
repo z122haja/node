@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我进行测试</button>
+    <input type="file" name="file" id="fileIpt">
+    <a href="/import/template">点我下载模板</a>
+    <a href="/images/coverImage/16633997750740.a46e5acf0539d.png">点我跳转</a>
+</body>
+
+</html>
+<script src='https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js'></script>
+<script>
+    const btn = document.querySelector('#btn');
+    const fileIpt = document.querySelector('#fileIpt');
+
+    btn.addEventListener('click', async () => {
+
+        // let formData = new FormData()
+
+        // formData.append(fileIpt.name,fileIpt.files[0])
+        // // 课程描述
+        // formData.append("description",'随便给个描述')
+        // // 课程名称
+        // formData.append("courseName",'日语初级班')
+
+        const { data } = await axios({
+            method: 'POST',
+            url: '/article/reviseRank',
+            data: {
+                man:{
+                    _id:'632eae5bd6ee87092d4653a4',
+                    rank:2
+                },
+                woman:{
+                    _id:'6329614359b511e690b6a250',
+                    rank:1
+                }
+            }
+        })
+        console.log(data);
+        /* const { data } = await axios({
+            method: 'GET',
+            url: '/course/courseList',
+            params: {
+                courseName: '一',
+                currentPage: 1,
+                pageSize: 10
+            }
+        })
+        console.log(data); */
+    })
+</script>
